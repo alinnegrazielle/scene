@@ -1,4 +1,4 @@
-import THREE, {
+import {
   Scene,
   AxesHelper,
   AmbientLight,
@@ -9,8 +9,8 @@ import THREE, {
   PlaneGeometry,
   Color,
 } from "three"
-import { renderer, updateRenderer } from "/src/core/renderer"
-import { gui } from "/src/core/gui"
+import { updateRenderer } from "../core/renderer"
+import { gui } from "../core/gui"
 
 export const scene = new Scene()
 
@@ -433,7 +433,7 @@ floorCtrls.addInput(floor.position, "z", {
   max: 10,
   step: 0.1,
 })
-floorCtrls.addInput(PARAMS, "color").on("change", (e) => {
+floorCtrls.addInput(PARAMS, "color").on("change", (e: any) => {
   floor.material.color = new Color(e.value)
 })
 
