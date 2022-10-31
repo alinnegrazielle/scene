@@ -9,8 +9,8 @@ import THREE, {
   PlaneGeometry,
   Color,
 } from "three"
-import { renderer, updateRenderer } from "/src/core/renderer"
-import { gui } from "/src/core/gui"
+import { renderer, updateRenderer } from "../core/renderer"
+import { gui } from "../core/gui"
 
 export const scene = new Scene()
 
@@ -57,7 +57,7 @@ const floor = new Mesh(
 )
 
 floor.position.set(1, 0.1, 1)
-floor.scale.set(18, 27, 16)
+floor.scale.set(24, 27, 18)
 floor.rotation.set(-Math.PI / 2, 0, 0)
 floor.castShadow = true
 
@@ -71,7 +71,7 @@ const wall1 = new Mesh(
 )
 
 wall1.position.set(1, 6, 14)
-wall1.scale.set(18, 1, 13)
+wall1.scale.set(24, 1, 13)
 wall1.rotation.set(-Math.PI / 2, 0, 0)
 wall1.castShadow = true
 
@@ -99,7 +99,7 @@ const wall2 = new Mesh(
 )
 
 wall2.position.set(1, 6, -12.3)
-wall2.scale.set(13, 1, 18.5)
+wall2.scale.set(13, 1, 24)
 wall2.rotation.set(0,-Math.PI / 2, 7.8)
 
 // janeladireita
@@ -111,7 +111,7 @@ const window2 = new Mesh(
   })
 )
 
-window2.position.set(1.5, 6, -12)
+window2.position.set(4, 6, -12)
 window2.scale.set(1, 8, 4)
 window2.rotation.set(-Math.PI / 2, 0, 1.6)
 window2.castShadow = true
@@ -126,7 +126,7 @@ const wall3 = new Mesh(
   })
 )
 
-wall3.position.set(-8, 6, 1)
+wall3.position.set(-11, 6, 1)
 wall3.scale.set(13, 1, 27)
 wall3.rotation.set(0, 0, -Math.PI / 2)
 
@@ -140,7 +140,7 @@ const window1 = new Mesh(
   })
 
 )
-window1.position.set(-7.9, 6, 1)
+window1.position.set(-10.5, 6, 1)
 window1.scale.set(1, 8, 4)
 window1.rotation.set(-Math.PI / 2, 0, 0)
 window1.castShadow = true
@@ -279,7 +279,7 @@ const tableStud2 = new Mesh(
   })
 )
 
-tableStud2.position.set(1, 1.7, 2)
+tableStud2.position.set(0, 1.7, 2)
 tableStud2.scale.set(1, 1, 3)
 tableStud2.rotation.set(-Math.PI / 2, 0, 0)
 
@@ -292,7 +292,7 @@ const tampa2 = new Mesh(
   })
 )
 
-tampa2.position.set(1, 3.2, 2)
+tampa2.position.set(0, 3.2, 2)
 tampa2.scale.set(3, 3, 0.1)
 tampa2.rotation.set(-Math.PI / 2, 0, 0)
 tampa2.castShadow = true
@@ -306,7 +306,7 @@ const seat2 = new Mesh(
   })
 )
 
-seat2.position.set(0.9, 1.2, -1)
+seat2.position.set(0, 1.2, -1)
 seat2.scale.set(3, 2, 1.8)
 seat2.rotation.set(-Math.PI / 2, 0, 0)
 seat2.castShadow = true
@@ -320,7 +320,7 @@ const back2 = new Mesh(
   })
 )
 
-back2.position.set(0.9, 2.3, -2)
+back2.position.set(0, 2.3, -2)
 back2.scale.set(3, 0.5, 4)
 back2.rotation.set(-Math.PI / 2, 0, 0)
 back2.castShadow = true
@@ -334,7 +334,7 @@ const tableStud3 = new Mesh(
   })
 )
 
-tableStud3.position.set(-3, 1.7, 2)
+tableStud3.position.set(-5, 1.7, 2)
 tableStud3.scale.set(1, 1, 3)
 tableStud3.rotation.set(-Math.PI / 2, 0, 0)
 
@@ -347,7 +347,7 @@ const tampa3 = new Mesh(
   })
 )
 
-tampa3.position.set(-3, 3.2, 2)
+tampa3.position.set(-5, 3.2, 2)
 tampa3.scale.set(3, 3, 0.1)
 tampa3.rotation.set(-Math.PI / 2, 0, 0)
 tampa3.castShadow = true
@@ -361,7 +361,7 @@ const seat3 = new Mesh(
   })
 )
 
-seat3.position.set(-3.2, 1.2, -1)
+seat3.position.set(-5.2, 1.2, -1)
 seat3.scale.set(3, 2, 1.8)
 seat3.rotation.set(-Math.PI / 2, 0, 0)
 seat3.castShadow = true
@@ -375,10 +375,191 @@ const back3 = new Mesh(
   })
 )
 
-back3.position.set(-3.2, 2.3, -2)
+back3.position.set(-5.2, 2.3, -2)
 back3.scale.set(3, 0.5, 4)
 back3.rotation.set(-Math.PI / 2, 0, 0)
 back3.castShadow = true
+
+// mesaAluno4
+const tableStud4 = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorTableTea),
+    wireframe: false,
+  })
+)
+
+tableStud4.position.set(5, 1.7, -5)
+tableStud4.scale.set(1, 1, 3)
+tableStud4.rotation.set(-Math.PI / 2, 0, 0)
+
+// tampamesa4
+const tampa4 = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorTampa),
+    wireframe: false,
+  })
+)
+
+tampa4.position.set(5.1, 3.2, -5)
+tampa4.scale.set(3, 3, 0.1)
+tampa4.rotation.set(-Math.PI / 2, 0, 0)
+tampa4.castShadow = true
+
+// assento4
+const seat4 = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorSeat),
+    wireframe: false,
+  })
+)
+
+seat4.position.set(5.1, 1.2, -8)
+seat4.scale.set(3, 2, 1.8)
+seat4.rotation.set(-Math.PI / 2, 0, 0)
+seat4.castShadow = true
+
+// encosto4
+const back4 = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorSeat),
+    wireframe: false,
+  })
+)
+
+back4.position.set(5.1, 2.3, -9)
+back4.scale.set(3, 0.5, 4)
+back4.rotation.set(-Math.PI / 2, 0, 0)
+back4.castShadow = true
+
+// mesaAlunoMeio2
+const tableStud5 = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorTableTea),
+    wireframe: false,
+  })
+)
+
+tableStud5.position.set(0, 1.7, -5)
+tableStud5.scale.set(1, 1, 3)
+tableStud5.rotation.set(-Math.PI / 2, 0, 0)
+
+// tampamesa5
+const tampa5 = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorTampa),
+    wireframe: false,
+  })
+)
+
+tampa5.position.set(0, 3.2, -5)
+tampa5.scale.set(3, 3, 0.1)
+tampa5.rotation.set(-Math.PI / 2, 0, 0)
+tampa5.castShadow = true
+
+// assento5
+const seat5 = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorSeat),
+    wireframe: false,
+  })
+)
+
+seat5.position.set(0, 1.2, -8)
+seat5.scale.set(3, 2, 1.8)
+seat5.rotation.set(-Math.PI / 2, 0, 0)
+seat5.castShadow = true
+
+// encosto5
+const back5 = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorSeat),
+    wireframe: false,
+  })
+)
+
+back5.position.set(0, 2.3, -9)
+back5.scale.set(3, 0.5, 4)
+back5.rotation.set(-Math.PI / 2, 0, 0)
+back5.castShadow = true
+
+// armário
+const cabinet = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorSeatteacher),
+    wireframe: false,
+  })
+)
+
+cabinet.position.set(-7, 3, -11)
+cabinet.scale.set(6, 2, 6)
+cabinet.rotation.set(-Math.PI / 2, 0, 0)
+cabinet.castShadow = true
+
+// portaDirArmario
+const doorRight = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorTampao),
+    wireframe: false,
+  })
+)
+
+doorRight.position.set(-8.2, 4.2, -10)
+doorRight.scale.set(2.5, 2, 0.2)
+doorRight.rotation.set(0, 0, -Math.PI / 2)
+doorRight.castShadow = true
+
+// portaEsqArmario
+const doorLeft = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorTampao),
+    wireframe: false,
+  })
+)
+
+doorLeft.position.set(-5.7, 4.2, -10)
+doorLeft.scale.set(2.5, 2, 0.2)
+doorLeft.rotation.set(0, 0, -Math.PI / 2)
+doorLeft.castShadow = true
+
+
+// gavetaSupEsqArmario
+const drawerHig = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorTampao),
+    wireframe: false,
+  })
+)
+
+drawerHig.position.set(-6.9, 1, -10)
+drawerHig.scale.set(1, 4.9, 0.2)
+drawerHig.rotation.set(0, 0, -Math.PI / 2)
+drawerHig.castShadow = true
+
+// gavetaInfArmario
+const drawerLow = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshToonMaterial({
+    color: new Color(PARAMS.colorTampao),
+    wireframe: false,
+  })
+)
+
+drawerLow.position.set(-6.9, 2.2, -10)
+drawerLow.scale.set(1, 4.9, 0.2)
+drawerLow.rotation.set(0, 0, -Math.PI / 2)
+drawerLow.castShadow = true
 
 
 // __________________________________________________
@@ -408,6 +589,19 @@ scene.add(tableStud3)
 scene.add(tampa3)
 scene.add(seat3)
 scene.add(back3)
+scene.add(tableStud4)
+scene.add(tampa4)
+scene.add(seat4)
+scene.add(back4)
+scene.add(tableStud5)
+scene.add(tampa5)
+scene.add(seat5)
+scene.add(back5)
+scene.add(cabinet)
+scene.add(doorRight)
+scene.add(doorLeft)
+scene.add(drawerHig)
+scene.add(drawerLow)
 
 // __________________________________________________
 
