@@ -10,16 +10,10 @@ import {
   PlaneGeometry,
   Color,
   TextureLoader,
-  PointLight,
 } from "three"
-<<<<<<< HEAD
-import { updateRenderer } from "../core/renderer"
-import { gui } from "../core/gui"
-=======
 import { renderer, updateRenderer } from "../core/renderer"
 import { gui } from "../core/gui"
 import * as THREE from 'three';
->>>>>>> d79fec5 (Added light sources)
 
 export const scene = new Scene()
 
