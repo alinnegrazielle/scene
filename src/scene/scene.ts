@@ -6,11 +6,20 @@ import {
   Mesh,
   BoxGeometry,
   MeshToonMaterial,
+  MeshPhongMaterial,
   PlaneGeometry,
   Color,
+  TextureLoader,
+  PointLight,
 } from "three"
+<<<<<<< HEAD
 import { updateRenderer } from "../core/renderer"
 import { gui } from "../core/gui"
+=======
+import { renderer, updateRenderer } from "../core/renderer"
+import { gui } from "../core/gui"
+import * as THREE from 'three';
+>>>>>>> d79fec5 (Added light sources)
 
 export const scene = new Scene()
 
@@ -22,8 +31,11 @@ gui.addInput(axesHelper, "visible", {
   label: "AxesHelper",
 })
 
+scene.background = new TextureLoader().load('/assets/resources/quadro.jpg');
+
 const ambientLight = new AmbientLight(0xffffff, 0.5)
 scene.add(ambientLight)
+// _____________________________________________________________
 
 const directionalLight = new DirectionalLight("#ffffff", 2)
 directionalLight.castShadow = true
@@ -34,10 +46,66 @@ directionalLight.position.set(0.25, 2, 2.25)
 
 scene.add(directionalLight)
 
+const directionalLightCtrls = gui.addFolder({
+  title: "Luz Direcional",
+})
+
+directionalLightCtrls.addInput(directionalLight.position, "x", {
+  label: "dir x",
+  min: -10,
+  max: 10,
+  step: 0.1,
+})
+
+directionalLightCtrls.addInput(directionalLight.position, "y", {
+  label: "dir y",
+  min: -10,
+  max: 10,
+  step: 0.1,
+})
+
+directionalLightCtrls.addInput(directionalLight.position, "z", {
+  label: "dir z",
+  min: -10,
+  max: 10,
+  step: 0.1,
+})
+// _____________________________________________________________
+
+var SpotLight = new THREE.SpotLight( 0xffffff, 5);
+SpotLight.position.set(0, 5, 0);
+
+scene.add(SpotLight);
+
+const SpotLightDir = gui.addFolder({
+  title: "Spot",
+})
+
+SpotLightDir.addInput(SpotLight.position, "x", {
+  label: "dir x",
+  min: -10,
+  max: 10,
+  step: 0.1,
+})
+
+SpotLightDir.addInput(SpotLight.position, "y", {
+  label: "dir y",
+  min: -10,
+  max: 10,
+  step: 0.1,
+})
+
+SpotLightDir.addInput(SpotLight.position, "z", {
+  label: "dir z",
+  min: -10,
+  max: 10,
+  step: 0.1,
+})
+
 const PARAMS = {
   color: "#FFCC66",
-  colorWall: "#663333",
-  colorWindow:"#4191e1",
+  colorWall: "#F0F8FF",
+  colorWindow:"#FFFAFA",
   colorBlackboard: "#006600",
   colorWriting: "#FFxxxx",
   colorTableTea: "#CC9900",
@@ -48,10 +116,13 @@ const PARAMS = {
 }
 
 // piso
+
+var textura = new TextureLoader().load('/assets/resources/piso.jpg');
+
 const floor = new Mesh(
   new PlaneGeometry(1, 1, 1),
   new MeshToonMaterial({
-    color: new Color(PARAMS.color),
+    map: textura,
     wireframe: false,
   })
 )
@@ -102,21 +173,6 @@ wall2.position.set(1, 6, -12.3)
 wall2.scale.set(13, 1, 24)
 wall2.rotation.set(0,-Math.PI / 2, 7.8)
 
-// janeladireita
-const window2 = new Mesh(
-  new BoxGeometry(1, 1, 1),
-  new MeshToonMaterial({
-    color: new Color(PARAMS.colorWindow),
-    wireframe: false,
-  })
-)
-
-window2.position.set(4, 6, -12)
-window2.scale.set(1, 8, 4)
-window2.rotation.set(-Math.PI / 2, 0, 1.6)
-window2.castShadow = true
-
-
 // paredeFundo
 const wall3 = new Mesh(
   new BoxGeometry(1, 1, 1),
@@ -130,21 +186,39 @@ wall3.position.set(-11, 6, 1)
 wall3.scale.set(13, 1, 27)
 wall3.rotation.set(0, 0, -Math.PI / 2)
 
+// janeladireita
+
+var grade = new TextureLoader().load('/assets/resources/janela.jpg');
+
+const window2 = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshPhongMaterial({
+    color: new Color(PARAMS.colorWindow),
+    map: grade,
+    specular: '#F0FFFF',
+  })
+)
+
+window2.position.set(4, 6, -12)
+window2.scale.set(1, 8, 4)
+window2.rotation.set(-Math.PI / 2, 0, 1.6)
+window2.castShadow = true
+
 // janeladomeio
 
 const window1 = new Mesh(
   new BoxGeometry(1, 1, 1),
-  new MeshToonMaterial({
+  new MeshPhongMaterial({
     color: new Color(PARAMS.colorWindow),
-    wireframe: false,
+    map: grade,
+    specular: '#F0FFFF',
   })
 
 )
-window1.position.set(-10.5, 6, 1)
+window1.position.set(-10.8, 6, 1)
 window1.scale.set(1, 8, 4)
 window1.rotation.set(-Math.PI / 2, 0, 0)
 window1.castShadow = true
-
 
 // pe1mesaProf
 const tableTea1 = new Mesh(
@@ -603,37 +677,8 @@ scene.add(doorLeft)
 scene.add(drawerHig)
 scene.add(drawerLow)
 
-// __________________________________________________
 
-const floorCtrls = gui.addFolder({
-  title: "floor",
-})
-
-floorCtrls.addInput(floor.position, "x", {
-  label: "pos x",
-  min: -10,
-  max: 10,
-  step: 0.1,
-})
-floorCtrls.addInput(floor.position, "y", {
-  label: "pos y",
-  min: -10,
-  max: 10,
-  step: 0.1,
-})
-floorCtrls.addInput(floor.position, "z", {
-  label: "pos z",
-  min: -10,
-  max: 10,
-  step: 0.1,
-})
-floorCtrls.addInput(PARAMS, "color").on("change", (e: any) => {
-  floor.material.color = new Color(e.value)
-})
-
-floorCtrls.addInput(floor.material, "wireframe")
-
-// __________________________________________________
+// _____________________________________________________________
 
 
 const plane = new Mesh(
